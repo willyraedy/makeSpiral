@@ -3,6 +3,7 @@ const {
   determineSize,
   createEmptySpiral,
   getStartingIndex,
+  isNum
 } = require('./excercise3');
 
 describe('Spiral Maker', () => {
@@ -38,4 +39,28 @@ describe('Spiral Maker', () => {
       expect(getStartingIndex(25)).to.equal(12);
     });
   });
-})
+
+  describe('isNum', () => {
+    const spiral = [
+      ['  ', '  ', '  '],
+      ['  ', 10, '  '],
+      ['  ', '  ', '  '],
+    ];
+    it('determines if there is a number to the left', () => {
+      expect(isNum('left', 1, 2, spiral)).to.equal(true);
+      expect(isNum('left', 2, 2, spiral)).to.equal(false);
+    });
+    it('determines if there is a number to the right', () => {
+      expect(isNum('right', 1, 0, spiral)).to.equal(true);
+      expect(isNum('right', 2, 2, spiral)).to.equal(false);
+    });
+    it('determines if there is a number to the top', () => {
+      expect(isNum('top', 2, 1, spiral)).to.equal(true);
+      expect(isNum('top', 2, 2, spiral)).to.equal(false);
+    });
+    it('determines if there is a number to the left', () => {
+      expect(isNum('bottom', 0, 1, spiral)).to.equal(true);
+      expect(isNum('bottom', 2, 2, spiral)).to.equal(false);
+    });
+  });
+});
