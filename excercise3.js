@@ -8,6 +8,16 @@ const determineSize = (n) => {
   return 2 * rings + 1;
 };
 
+const createEmptySpiral = (size) => {
+  return Array(size).fill(Array(size).fill('  '));
+};
+
+const getStartingIndex = (size) => {
+  return Math.floor(size / 2);
+}
+
 module.exports = {
   determineSize,
+  createEmptySpiral,
+  getStartingIndex,
 };
