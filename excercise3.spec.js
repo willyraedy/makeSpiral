@@ -3,10 +3,10 @@ const {
   determineSize,
   createEmptySpiral,
   getStartingIndex,
-  SpiralMaker,
+  Spiral,
 } = require('./excercise3');
 
-describe('Spiral Maker', () => {
+describe('Spiral ', () => {
   const emptySpiral = [
     ['  ', '  ', '  '],
     ['  ', '  ', '  '],
@@ -46,71 +46,71 @@ describe('Spiral Maker', () => {
   });
 
   describe('isNum', () => {
-    const spiralMaker = new SpiralMaker(8);
-    spiralMaker.spiral = centerSpiral;
+    const spiral = new Spiral(8);
+    spiral.spiral = centerSpiral;
     it('determines if there is a number to the left', () => {
-      spiralMaker.row = 1;
-      spiralMaker.col = 2;
-      expect(spiralMaker.isNum('left')).to.equal(true);
-      spiralMaker.row = 2;
-      spiralMaker.col = 2;
-      expect(spiralMaker.isNum('left')).to.equal(false);
+      spiral.row = 1;
+      spiral.col = 2;
+      expect(spiral.isNum('left')).to.equal(true);
+      spiral.row = 2;
+      spiral.col = 2;
+      expect(spiral.isNum('left')).to.equal(false);
     });
     it('determines if there is a number to the right', () => {
-      spiralMaker.row = 1;
-      spiralMaker.col = 0;
-      expect(spiralMaker.isNum('right')).to.equal(true);
-      spiralMaker.row = 2;
-      spiralMaker.col = 2;
-      expect(spiralMaker.isNum('right')).to.equal(false);
+      spiral.row = 1;
+      spiral.col = 0;
+      expect(spiral.isNum('right')).to.equal(true);
+      spiral.row = 2;
+      spiral.col = 2;
+      expect(spiral.isNum('right')).to.equal(false);
     });
     it('determines if there is a number to the top', () => {
-      spiralMaker.row = 2;
-      spiralMaker.col = 1;
-      expect(spiralMaker.isNum('top')).to.equal(true);
-      spiralMaker.row = 2;
-      spiralMaker.col = 2;
-      expect(spiralMaker.isNum('top')).to.equal(false);
+      spiral.row = 2;
+      spiral.col = 1;
+      expect(spiral.isNum('top')).to.equal(true);
+      spiral.row = 2;
+      spiral.col = 2;
+      expect(spiral.isNum('top')).to.equal(false);
     });
     it('determines if there is a number to the left', () => {
-      spiralMaker.row = 0;
-      spiralMaker.col = 1;
-      expect(spiralMaker.isNum('bottom')).to.equal(true);
-      spiralMaker.row = 2;
-      spiralMaker.col = 2;
-      expect(spiralMaker.isNum('bottom')).to.equal(false);
+      spiral.row = 0;
+      spiral.col = 1;
+      expect(spiral.isNum('bottom')).to.equal(true);
+      spiral.row = 2;
+      spiral.col = 2;
+      expect(spiral.isNum('bottom')).to.equal(false);
     });
   });
 
   describe('insert number', () => {
     it('inserts number in the current position', () => {
-      const spiralMaker = new SpiralMaker(8);
-      spiralMaker.row = 1;
-      spiralMaker.col = 1;
-      spiralMaker.insertNumber(99);
-      expect(spiralMaker.spiral[1][1]).to.equal(99);
-      spiralMaker.row = 0;
-      spiralMaker.col = 0;
-      spiralMaker.insertNumber(66);
-      expect(spiralMaker.spiral[0][0]).to.equal(66);
+      const spiral = new Spiral(8);
+      spiral.row = 1;
+      spiral.col = 1;
+      spiral.insertNumber(99);
+      expect(spiral.spiral[1][1]).to.equal(99);
+      spiral.row = 0;
+      spiral.col = 0;
+      spiral.insertNumber(66);
+      expect(spiral.spiral[0][0]).to.equal(66);
     });
   });
 
   describe('place next number', () => {
     it('places numbers correctly', () => {
-      const spiralMaker = new SpiralMaker(8);
-      spiralMaker.spiral = emptySpiral;
-      spiralMaker.row = 1;
-      spiralMaker.col = 1;
-      spiralMaker.goToNextPosition();
-      expect(spiralMaker.row).to.equal(1);
-      expect(spiralMaker.col).to.equal(2);
-      spiralMaker.spiral = centerSpiral;
-      spiralMaker.row = 1;
-      spiralMaker.col = 2;
-      spiralMaker.goToNextPosition();
-      expect(spiralMaker.row).to.equal(2);
-      expect(spiralMaker.col).to.equal(2);
+      const spiral = new Spiral(8);
+      spiral.spiral = emptySpiral;
+      spiral.row = 1;
+      spiral.col = 1;
+      spiral.goToNextPosition();
+      expect(spiral.row).to.equal(1);
+      expect(spiral.col).to.equal(2);
+      spiral.spiral = centerSpiral;
+      spiral.row = 1;
+      spiral.col = 2;
+      spiral.goToNextPosition();
+      expect(spiral.row).to.equal(2);
+      expect(spiral.col).to.equal(2);
     });
   });
 
@@ -121,8 +121,8 @@ describe('Spiral Maker', () => {
         [5, 0, 1],
         [4, 3, 2],
       ];
-      const spiralMaker = new SpiralMaker(8);
-      expect(spiralMaker.spiral).to.deep.equal(resultFor8);
+      const spiral = new Spiral(8);
+      expect(spiral.spiral).to.deep.equal(resultFor8);
     });
   });
 });

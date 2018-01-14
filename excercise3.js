@@ -20,7 +20,7 @@ const getStartingIndex = (size) => {
   return Math.floor(size / 2);
 };
 
-class SpiralMaker {
+class Spiral {
   constructor(n) {
     if (n < 0) throw new Error('Number must be a positive integer');
     const size = determineSize(n);
@@ -97,11 +97,20 @@ class SpiralMaker {
       this.goToNextPosition(i);
     }
   }
+
+  printSpiral() {
+    this.spiral.forEach(row => {
+      console.log(row.join(' '));
+    });
+  }
 }
 
 module.exports = {
   determineSize,
   createEmptySpiral,
   getStartingIndex,
-  SpiralMaker,
+  Spiral,
 };
+
+const spiral = new Spiral(24);
+spiral.printSpiral();
